@@ -10,6 +10,11 @@ $ npm install chai-uuid
 Use the `uuid` method to test whether the assertion is a valid UUID.
 
 ```javascript
+const chai = require("chai");
+chai.use(require('chai-uuid'));
+```
+
+```javascript
 // validate UUID v1
 expect('bd74c8da-4d9e-11e7-b114-b2f933d5fe66').to.be.a.uuid('v1');
 // validate UUID v2
@@ -22,9 +27,4 @@ expect('0ce529f4-8854-41ec-b67c-fbcb4e716e42').to.be.a.uuid('v4');
 expect('48a698a0-1641-5aca-bc1b-de9b1a482ee1').to.be.a.uuid('v5');
 // validate UUID (any version)
 expect('a416d989-91d1-48c9-b583-267df138834c').to.be.a.uuid();
-```
-
-```javascript
-const chai = require("chai");
-chai.use(require('chai-uuid'));
 ```
