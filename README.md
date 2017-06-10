@@ -1,4 +1,4 @@
-# Chai UUID
+# chai-uuid
 Chai plugin for performing assertions on UUID strings
 
 ## Install

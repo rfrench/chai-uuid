@@ -1,6 +1,6 @@
 {
   "name": "chai-uuid",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Chai plugin for performing assertions on UUID strings",
   "main": "index.js",
   "directories": {
