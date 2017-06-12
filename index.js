@@ -1,7 +1,8 @@
 'use strict';
 
 module.exports = function (chai, utils) {
-  const Assertion = chai.Assertion;
+  var Assertion = chai.Assertion;
+  var assert = chai.assert;
 
   /**
    * Returns a valid regex for validating the UUID
@@ -31,7 +32,7 @@ module.exports = function (chai, utils) {
    * @param  {String} version
    */
   function uuid(version) {
-    const v = (version) ? version : '';
+    var v = (version) ? version : '';
 
     // verify its a valid string
     this.assert(
@@ -43,7 +44,7 @@ module.exports = function (chai, utils) {
     );
 
     // assert it is a valid uuid
-    const regex = getRegEx(v);
+    var regex = getRegEx(v);
     this.assert(
       regex.test(this._obj),
       'expected #{this} to be a valid UUID ' + v,
@@ -51,7 +52,13 @@ module.exports = function (chai, utils) {
     );    
   }
 
-  // expose methods for chai
+  // should / expect methods for chai
   Assertion.addMethod('uuid', uuid)
   Assertion.addMethod('guid', uuid)
+
+  // assert methods for chai
+  assert.uuid = function (val, exp) {
+    new chai.Assertion(val).to.be.a.uuid(exp);
+  };
+  assert.guid = assert.uuid;
 };

@@ -1,10 +1,12 @@
-const chai = require('chai');
+var chai = require('chai');
 chai.use(require('../index'));
-const expect = chai.expect;
+var expect = chai.expect;
+var should = chai.should();
+var assert = chai.assert;
 
-describe('Validate UUID', () => {
+describe('Validate UUID', function(){
   describe('Any Version', function() {
-    const uuid = '8becb83e-7125-1488-b56d-af27d19d313e';
+    var uuid = '8becb83e-7125-1488-b56d-af27d19d313e';
 
     it('should successfully validate a UUID (any version)', function() {
       expect(uuid).to.be.a.uuid();
@@ -17,10 +19,22 @@ describe('Validate UUID', () => {
     it('should successfully validate a UUID (any version) using the "guid" method', function() {
       expect(uuid).to.be.a.guid();
     });
+
+    it('should successfully validate a UUID (any version) using "should" style testing', function() {
+      uuid.should.be.a.uuid('v1');
+    });
+
+    it('should successfully validate a UUID (any version) using "assert" style testing', function() {
+      assert.uuid(uuid, 'v1');
+    });
+
+    it('should successfully validate a GUID (any version) using "assert" style testing', function() {
+      assert.guid(uuid, 'v1');
+    });
   });
 
   describe('V1', function() {
-    const v1 = '6866b356-4d73-11e7-b114-b2f933d5fe66';
+    var v1 = '6866b356-4d73-11e7-b114-b2f933d5fe66';
 
     it('should successfully validate a v1 UUID', function() {
       expect(v1).to.be.a.uuid('v1');
@@ -31,7 +45,7 @@ describe('Validate UUID', () => {
     });
 
     it('should fail to validate an v1 UUID when the UUID is v4', function() {
-      const v4 = '6000ad5c-5f8e-43f6-ba09-fba7e844a674';
+      var v4 = '6000ad5c-5f8e-43f6-ba09-fba7e844a674';
       try {
         expect(v4).to.be.a.uuid('v1');
       }
@@ -42,7 +56,7 @@ describe('Validate UUID', () => {
   });
 
   describe('V2', function() {
-    const v2 = 'cd4c9471-832c-274b-828b-0208b26cc132';
+    var v2 = 'cd4c9471-832c-274b-828b-0208b26cc132';
 
     it('should successfully validate a v2 UUID', function() {
       expect(v2).to.be.a.uuid('v2');
@@ -53,7 +67,7 @@ describe('Validate UUID', () => {
     });
 
     it('should fail to validate an v2 UUID when the UUID is v4', function() {
-      const v4 = '6000ad5c-5f8e-43f6-ba09-fba7e844a674';
+      var v4 = '6000ad5c-5f8e-43f6-ba09-fba7e844a674';
       try {
         expect(v4).to.be.a.uuid('v2');
       }
@@ -64,7 +78,7 @@ describe('Validate UUID', () => {
   });
 
   describe('V3', function() {
-    const v3 = 'df4efe51-9457-3f35-875d-df5821afcdbf';
+    var v3 = 'df4efe51-9457-3f35-875d-df5821afcdbf';
 
     it('should successfully validate a v3 UUID', function() {
       expect(v3).to.be.a.uuid('v3');
@@ -75,7 +89,7 @@ describe('Validate UUID', () => {
     });
 
     it('should fail to validate an v3 UUID when the UUID is v4', function() {
-      const v4 = '6000ad5c-5f8e-43f6-ba09-fba7e844a674';
+      var v4 = '6000ad5c-5f8e-43f6-ba09-fba7e844a674';
       try {
         expect(v4).to.be.a.uuid('v3');
       }
@@ -86,7 +100,7 @@ describe('Validate UUID', () => {
   });
 
   describe('V4', function() {
-    const v4 = '94126908-4b30-47c1-bc56-1d39e2c3334f';
+    var v4 = '94126908-4b30-47c1-bc56-1d39e2c3334f';
 
     it('should successfully validate a v4 UUID', function() {
       expect(v4).to.be.a.uuid('v4');
@@ -97,7 +111,7 @@ describe('Validate UUID', () => {
     });
 
     it('should fail to validate an v4 UUID when the UUID is v1', function() {
-      const v1 = '6000ad5c-5f8e-13f6-ba09-fba7e844a674';
+      var v1 = '6000ad5c-5f8e-13f6-ba09-fba7e844a674';
       try {
         expect(v1).to.be.a.uuid('v4');
       }
@@ -108,7 +122,7 @@ describe('Validate UUID', () => {
   });
 
   describe('V5', function() {
-    const v5 = '511ff25d-ca33-536e-89a7-d3dfebc23e2a';
+    var v5 = '511ff25d-ca33-536e-89a7-d3dfebc23e2a';
 
     it('should successfully validate a v5 UUID', function() {
       expect(v5).to.be.a.uuid('v5');
@@ -119,7 +133,7 @@ describe('Validate UUID', () => {
     });
 
     it('should fail to validate an v5 UUID when the UUID is v1', function() {
-      const v1 = '6000ad5c-5f8e-13f6-ba09-fba7e844a674';
+      var v1 = '6000ad5c-5f8e-13f6-ba09-fba7e844a674';
       try {
         expect(v1).to.be.a.uuid('v5');
       }
