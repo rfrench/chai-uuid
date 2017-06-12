@@ -9,7 +9,7 @@ module.exports = function (chai, utils) {
    * @return {Regex}
    */
   function getRegEx(version) {
-    switch(version)
+    switch(version.toLowerCase())
     {
       case 'v1':
         return /^[0-9A-F]{8}-[0-9A-F]{4}-[1][0-9A-F]{3}-[89AB][0-9A-F]{3}-[0-9A-F]{12}$/i;
@@ -27,10 +27,10 @@ module.exports = function (chai, utils) {
   }
 
   /**
-   * Validates a UUID
+   * Validates a uuid
    * @param  {String} version
    */
-  Assertion.addMethod('uuid', function(version) {
+  function uuid(version) {
     const v = (version) ? version : '';
 
     // verify its a valid string
@@ -48,6 +48,10 @@ module.exports = function (chai, utils) {
       regex.test(this._obj),
       'expected #{this} to be a valid UUID ' + v,
       'expected #{this} to not be a UUID ' + v
-    );
-  });
+    );    
+  }
+
+  // expose methods for chai
+  Assertion.addMethod('uuid', uuid)
+  Assertion.addMethod('guid', uuid)
 };

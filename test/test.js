@@ -13,6 +13,10 @@ describe('Validate UUID', () => {
     it('should successfully validate an uppercase UUID (any version)', function() {
       expect(uuid.toUpperCase()).to.be.a.uuid();
     });
+
+    it('should successfully validate a UUID (any version) using the "guid" method', function() {
+      expect(uuid).to.be.a.guid();
+    });
   });
 
   describe('V1', function() {
