@@ -14,7 +14,12 @@ const chai = require("chai");
 chai.use(require('chai-uuid'));
 ```
 
+## Expect
 ```javascript
+const chai = require("chai");
+chai.use(require('chai-uuid'));
+const expect = chai.expect;
+
 // validate UUID v1
 expect('bd74c8da-4d9e-11e7-b114-b2f933d5fe66').to.be.a.uuid('v1');
 // validate UUID v2
@@ -30,4 +35,30 @@ expect('a416d989-91d1-48c9-b583-267df138834c').to.be.a.uuid();
 
 // optionally, you can use the guid method
 expect('a416d989-91d1-48c9-b583-267df138834c').to.be.a.guid();
+```
+
+## Should
+```javascript
+const chai = require("chai");
+chai.use(require('chai-uuid'));
+const should = chai.should();
+
+// validate UUID v1
+'bd74c8da-4d9e-11e7-b114-b2f933d5fe66'.should.be.a.uuid('v1');
+
+// validate GUID
+'bd74c8da-4d9e-11e7-b114-b2f933d5fe66'.should.be.a.guid();
+```
+
+## Assert
+```javascript
+const chai = require("chai");
+chai.use(require('chai-uuid'));
+const assert = chai.assert;
+
+// validate UUID v1
+assert.uuid('bd74c8da-4d9e-11e7-b114-b2f933d5fe66', 'v1');
+
+// validate GUID
+assert.guid('bd74c8da-4d9e-11e7-b114-b2f933d5fe66');
 ```
